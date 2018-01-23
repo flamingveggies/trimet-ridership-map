@@ -24,11 +24,11 @@ L.control.layers(null, overlays).addTo(map);
 $.getJSON("./assets/tm_routes.geojson", function(routes) {
   routes = L.geoJSON(routes, {
     style: function (feature) {
-      console.log(feature);
       return {
-        color: feature.properties.frequent === "True" ? "black" : "blue",
-        opacity: 0.5,
-        weight: feature.properties.frequent === "True" ? 4 : 2
+        color: feature.properties.boarding_rides_2017 ? "rgb("+ (192 - Math.ceil(parseInt(feature.properties.boarding_rides_2017.replace(/,/g, '')) / 300)) + "," + (192 - Math.ceil(parseInt(feature.properties.boarding_rides_2017.replace(/,/g, '')) / 300)) + ",255)" : "black",
+        // color: feature.properties.frequent === "True" ? "blue" : "lightblue",
+        opacity: .8,
+        weight: feature.properties.frequent === "True" ? 5 : 2
 
       };
     }
